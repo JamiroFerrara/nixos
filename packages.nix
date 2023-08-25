@@ -4,6 +4,8 @@
       modules = [
         ./configuration.nix
         ./programs/chrome.nix
+        ./programs/zsh.nix
+        ./programs/grub.nix
 
         home-manager.nixosModules.home-manager {
           home-manager.users.jferrara = { pkgs, ... }: {
