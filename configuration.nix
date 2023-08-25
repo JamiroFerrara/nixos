@@ -64,13 +64,6 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.system = "x86_64-linux";
 
-  programs.zsh.enable = true;
-  programs.zsh.enableAutosuggestions = true; 
-  programs.zsh.ohMyZsh = {
-    enable = true;
-    plugins = [ "git" "python" "man" "z"];
-  };
-
   # List services that you want to enable:
   services.picom.enable = true;
   services.getty.autologinUser = "jferrara";
