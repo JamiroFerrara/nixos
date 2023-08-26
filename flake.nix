@@ -13,6 +13,7 @@
     home-manager,
     ...
   }: {
+      imports = [ ./hardware-configuration.nix ];
       nixosConfigurations = (
         import ./packages.nix { inherit inputs nixpkgs home-manager; }
       );    

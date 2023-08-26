@@ -2,10 +2,19 @@
   jferrara = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./configuration.nix
+        ./hardware-configuration.nix
+
         ./programs/chrome.nix
-        ./programs/zsh.nix
         ./programs/grub.nix
+        ./programs/zsh.nix
+
+        ./config/fonts.nix
+        ./config/networking.nix
+        ./config/nix.nix
+        ./config/services.nix
+        ./config/time.nix
+        ./config/users.nix
+        ./config/xorg.nix
 
         home-manager.nixosModules.home-manager {
           home-manager.users.jferrara = { pkgs, ... }: {
