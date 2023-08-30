@@ -40,8 +40,11 @@
     let
       baseModules = [
         ./hardware-configuration.nix
+
         home-manager.nixosModules.home-manager
         {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = false;
           home-manager.users.jferrara = import ./home.nix;
           home-manager.extraSpecialArgs = attrs;
         }

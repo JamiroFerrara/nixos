@@ -21,7 +21,15 @@
             home.username = "jferrara";
             home.homeDirectory = "/home/jferrara";
             programs.home-manager.enable = true;
+            nixpkgs.config.allowUnfree = true;
             home.packages = with pkgs; [
+              pacman
+              swww
+              gitoxide
+              foot
+              gtk3
+              kitty
+              spotify
               cargo
               chromium
               alacritty
