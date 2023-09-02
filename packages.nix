@@ -23,15 +23,35 @@
             programs.home-manager.enable = true;
             nixpkgs.config.allowUnfree = true;
             home.packages = with pkgs; [
-              pacman
+              #Mac GPU drivers
+	            mesa
+	            intel-media-driver
+	            amdvlk
+	            libva
+	            libva-utils
+	            xwayland
+	            vaapiVdpau
+
+              xdg-desktop-portal-hyprland
+              dolphin
+              dunst
+              mpv
+              waybar
+	            fd
               swww
               gitoxide
               foot
+	            hyprland
+	            fzf
+	            fzy
               gtk3
               kitty
               spotify
               cargo
               chromium
+	            google-chrome
+	            firefox
+	            htop
               alacritty
               exa
               git

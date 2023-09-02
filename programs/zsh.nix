@@ -4,6 +4,6 @@
   programs.zsh.autosuggestions.enable = true; 
   programs.zsh.ohMyZsh = {
     enable = true;
-    plugins = [ "git" "python" "man" "z"];
+    plugins = [ "git" "python" "man" ];
   };
 }
