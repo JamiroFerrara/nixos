@@ -32,7 +32,14 @@
 	            xwayland
 	            vaapiVdpau
 
+	            nodejs
+	            (with dotnetCorePackages; combinePackages [
+	             sdk_6_0
+	             sdk_7_0
+	            ])
+
               xdg-desktop-portal-hyprland
+              wofi
               dolphin
               dunst
               mpv
