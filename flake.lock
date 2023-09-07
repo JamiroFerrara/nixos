@@ -1,37 +1,5 @@
 {
   "nodes": {
-    "asdf-kubectl": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1678798503,
-        "narHash": "sha256-xS6AOZGsSqxtvWwWikO2tOLQ42K/xV/eVFTsimDuK5s=",
-        "owner": "asdf-community",
-        "repo": "asdf-kubectl",
-        "rev": "cbe6df49865a52ad5e6e430dff33f474785ff2bf",
-        "type": "github"
-      },
-      "original": {
-        "owner": "asdf-community",
-        "repo": "asdf-kubectl",
-        "type": "github"
-      }
-    },
-    "asdf-kustomize": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1649341580,
-        "narHash": "sha256-WGLL5hUmFRfp7NDbankrmY5if9dRq/cNJEXBB3DwBA4=",
-        "owner": "Banno",
-        "repo": "asdf-kustomize",
-        "rev": "2efaa38011e7ea05c90cfe2ef5ec81d232adfa11",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Banno",
-        "repo": "asdf-kustomize",
-        "type": "github"
-      }
-    },
     "astronvim": {
       "flake": false,
       "locked": {
@@ -97,6 +65,22 @@
         "type": "github"
       }
     },
+    "catppuccin-cava": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1665489380,
+        "narHash": "sha256-hYC6ExtroRy2UoxGNHAzKm9MlTdJSegUWToat4VoN20=",
+        "owner": "catppuccin",
+        "repo": "cava",
+        "rev": "ad3301b50786e22e31cbf4316985827d6f05845e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catppuccin",
+        "repo": "cava",
+        "type": "github"
+      }
+    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -142,7 +126,7 @@
     "home-manager": {
       "inputs": {
         "nixpkgs": [
-          "nixos"
+          "nixpkgs"
         ]
       },
       "locked": {
@@ -287,12 +271,11 @@
     },
     "root": {
       "inputs": {
-        "asdf-kubectl": "asdf-kubectl",
-        "asdf-kustomize": "asdf-kustomize",
         "astronvim": "astronvim",
         "base16-alacritty": "base16-alacritty",
         "base16-fzf": "base16-fzf",
         "base16-shell": "base16-shell",
+        "catppuccin-cava": "catppuccin-cava",
         "darwin": "darwin",
         "disko": "disko",
         "home-manager": "home-manager",

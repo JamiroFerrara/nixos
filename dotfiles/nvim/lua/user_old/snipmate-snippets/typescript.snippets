@@ -1,0 +1,28 @@
+snippet func "Function!"
+	export function $1() {
+
+	}
+
+snippet afunc "Function!"
+	export function $1() {
+
+	}
+
+autosnippet ret "return"
+	return
+
+snippet yupstring "yup string"
+  $1: Yup.string().required('Campo obbligatorio').typeError('Campo obbligatorio'),
+	
+autosnippet log "log"
+  console.log($1)
+
+snippet api "Api call"
+	export async function $1(req: $2) {
+  	await client
+    	.request({
+      	url: API.UPDATE_CONF_CONTROL_PRE_DETAIL,
+      	method: 'POST',
+      	data: req,
+    	})
+	}

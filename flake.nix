@@ -11,49 +11,77 @@
     darwin.inputs.nixpkgs.follows = "nixpkgs-darwin";
     disko.url = "github:nix-community/disko/v1.0.0";
     disko.inputs.nixpkgs.follows = "nixos";
-    home-manager.url = "github:nix-community/home-manager/release-23.05";
-    home-manager.inputs.nixpkgs.follows = "nixos";
+    home-manager = {
+      url = "github:nix-community/home-manager/release-23.05";
+      # The `follows` keyword in inputs is used for inheritance.
+      # Here, `inputs.nixpkgs` of home-manager is kept consistent with the `inputs.nixpkgs` of the current flake,
+      # to avoid problems caused by different versions of nixpkgs dependencies.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    asdf-kubectl = { url = "github:asdf-community/asdf-kubectl"; flake = false; };
-    asdf-kustomize = { url = "github:Banno/asdf-kustomize"; flake = false; };
     astronvim = { url = "github:AstroNvim/AstroNvim/v3.36.3"; flake = false; };
     base16-alacritty = { url = "github:aarowill/base16-alacritty"; flake = false; };
     base16-fzf = { url = "github:tinted-theming/base16-fzf"; flake = false; };
     base16-shell = { url = "github:tinted-theming/base16-shell"; flake = false; };
     oh-my-tmux = { url = "github:gpakosz/.tmux"; flake = false; };
     oh-my-zsh = { url = "github:ohmyzsh/ohmyzsh"; flake = false; };
+
+    catppuccin-cava = {
+      url = "github:catppuccin/cava";
+      flake = false;
+    };
   };
 
-  outputs =
-    { self
+  outputs = inputs @ { 
+      self
     , nixos
     , nixpkgs
     , nixos-unstable
     , nixos-hardware
     , nixpkgs-darwin
     , nixpkgs-unstable
-    , darwin
-    , disko
     , home-manager
     , ...
-    }@attrs:
+    }:
     let
-      baseModules = [
-        ./hardware-configuration.nix
+      username = "jferrara";
+      userfullname = "Jamiro Ferrara";
+      useremail = "ferrarajamiro@hotmail.com";
+      x64_system = "x86_64-linux";
 
-        # home-manager.nixosModules.home-manager
-        # {
-        #   home-manager.useGlobalPkgs = true;
-        #   home-manager.useUserPackages = false;
-        #   home-manager.users.jferrara = import ./home.nix;
-        #   home-manager.extraSpecialArgs = attrs;
-        # }
-      ];
-    in
-    {
-      nixosConfigurations = (
-        import ./packages.nix { inherit nixpkgs home-manager; }
-      );    
-    };
+      nixosSystem = import ./modules/lib/nixosSystem.nix;
+
+      macbook_hypr_modules = {
+        nixos-modules = [
+          ./modules/hardware/macbook.nix
+          ./modules/core-desktop.nix
+
+          ./home/zsh.nix
+          ./modules/hyprland/default.nix
+        ];
+        home-module = import ./home/home.nix;
+      };
+
+      x64_specialArgs =
+      {
+        inherit username userfullname useremail;
+        pkgs-unstable = import nixpkgs-unstable {
+          system = x64_system; # refer the `system` parameter form outer scope recursively
+            config.allowUnfree = true;
+        };
+      }
+      // inputs;
+      in {
+        nixosConfigurations = let
+          base_args = {
+            inherit home-manager;
+            nixpkgs = nixpkgs; # or nixpkgs-unstable
+            system = x64_system;
+            specialArgs = x64_specialArgs;
+          };
+        in {
+          jferrara = nixosSystem (macbook_hypr_modules // base_args);
+        };
+};
 }
 

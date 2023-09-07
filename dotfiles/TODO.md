@@ -1,0 +1,2 @@
+- [ ] Update the current time of machine
+- [ ] Tmux configuration
