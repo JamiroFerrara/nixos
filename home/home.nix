@@ -93,6 +93,8 @@ in
         glibc
         jq
         jqp
+sbclPackages.gcm
+
 
 #networking
       mtr
