@@ -172,7 +172,7 @@ in
         source = ../dotfiles/gtk-3.0;
         recursive = true;
       };
-      ".config/.scripts/" = {
+      ".scripts/" = {
         source = ../dotfiles/.scripts;
         recursive = true;
       };
