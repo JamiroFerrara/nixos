@@ -176,6 +176,10 @@ in
         source = ../dotfiles/.scripts;
         recursive = true;
       };
+      ".config/rofi/" = {
+        source = ../dotfiles/rofi;
+        recursive = true;
+      };
    };
 
   xdg.dataFile = {
